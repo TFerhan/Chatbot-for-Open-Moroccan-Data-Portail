@@ -1,0 +1,50 @@
+.
+├── app.log
+├── config.env
+├── core
+│   ├── config.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── security.py
+│   └── token_manager.py
+├── datasets
+│   ├── data_ar.json
+│   ├── data_fr.json
+│   └── tags.json
+├── docker-compose.yml
+├── Dockerfile
+├── embeddings
+│   ├── faiss_answers_ar.faiss
+│   ├── faiss_answers_fr.faiss
+│   └── faiss_nom_tags_paraphrase_multi.faiss
+├── endpoints
+│   ├── classify_intents.py
+│   ├── general_qst.py
+│   ├── general_v1.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   └── request_data.py
+├── folder_structure.txt
+├── gen_embed.py
+├── init_models.sh
+├── __init__.py
+├── main.py
+├── __pycache__
+│   ├── main.cpython-38.pyc
+│   └── schemas.cpython-38.pyc
+├── requirements.txt
+├── run_api.sh
+├── schemas.py
+├── services
+│   ├── functions.py
+│   ├── __init__.py
+│   └── __pycache__
+├── token_gen.py
+├── tokens.env
+└── utils
+    ├── file_watcher.py
+    ├── __init__.py
+    ├── logging_config.py
+    └── __pycache__
+
+11 directories, 36 files
