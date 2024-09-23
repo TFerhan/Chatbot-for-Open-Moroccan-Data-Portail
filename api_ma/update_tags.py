@@ -2,6 +2,7 @@ import json
 import requests
 import re
 import argparse
+import os
 
 def get_new_data():
   link_tags = "https://data.gov.ma/data/api/3/action/tag_list"
