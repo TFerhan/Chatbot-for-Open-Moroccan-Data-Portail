@@ -47,9 +47,18 @@ def add_to_json(data_path, updated_path):
     print(f"Error in adding to json file : {e}")
     exit(1)
 
+def validate_paths(data_path, updated_path):
+    # Ensure both paths are in the datasets directory
+    if not (data_path.startswith(DATASETS_PATH) and updated_path.startswith(DATASETS_PATH)):
+        print("Both data_path and updated_path must be within the datasets directory.")
+        exit(1)
+        
 if __name__ == "__main__":
-  parser = argparse.ArgumentParser(description="Add new items to the json file")
-  parser.add_argument("data_path", type = str, help = "Path to the json file")
-  parser.add_argument("updated_path", type = str, help = "Path to the updated json file")
-  args = parser.parse_args()
-  add_to_json(args.data_path, args.updated_path)
+    # Configuration de l'analyseur d'arguments pour la ligne de commande
+    parser = argparse.ArgumentParser(description="Add new items to the json file")
+    parser.add_argument("data_path", type=str, help="Path to the json file")
+    parser.add_argument("updated_path", type=str, help="Path to the updated json file")
+    args = parser.parse_args()
+    
+    validate_paths(args.data_path, args.updated_path)
+    add_to_json(args.data_path, args.updated_path)
