@@ -4,6 +4,9 @@ import re
 import argparse
 import os
 
+
+DATASETS_PATH = "./datasets"
+
 def get_new_data():
   link_tags = "https://data.gov.ma/data/api/3/action/tag_list"
   link_titres = "https://data.gov.ma/data/api/3/action/package_list"
@@ -51,7 +54,7 @@ def add_to_json(data_path, updated_path):
 def validate_paths(data_path, updated_path):
     # Ensure both paths are in the datasets directory
     if not (data_path.startswith(DATASETS_PATH) and updated_path.startswith(DATASETS_PATH)):
-        print("Both data_path and updated_path must be within the datasets directory.")
+        print(f"Both data_path and updated_path must be within the datasets directory : {DATASETS_PATH}.")
         exit(1)
         
 if __name__ == "__main__":
