@@ -1,5 +1,5 @@
 # Use the official Python image
-FROM python:3.8-slim
+FROM python:3.9-slim
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
