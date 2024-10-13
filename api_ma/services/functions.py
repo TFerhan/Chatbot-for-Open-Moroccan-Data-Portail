@@ -191,59 +191,46 @@ def general_v1(text, lang = 'fr'):
 
 def chercher_data(mot, lang="fr", titles=None, links=None):
     if titles is None:
-        titles = []
+            titles = []
     if links is None:
-        links = []
+            links = []
     try:
-        response = requests.get(f"https://data.gov.ma/data/{lang}/dataset", params={'q': mot})
+        response = requests.get(f"https://data.gov.ma/data/api/3/action/package_search", params={'q': mot})
+        res_url = f"https://data.gov.ma/data/{lang}/dataset?q={mot}"
         if response.status_code != 200:
             return titles, links, response.url, 0
-        soup = BeautifulSoup(response.text, features="lxml")
-        nb_text = soup.find('h1').text
-        nombre_don = re.findall(r'\d+', nb_text)
-        media = soup.find('ul', class_='dataset-list list-unstyled')
-        if media:
-            thm = media.find_all('li', class_='dataset-item')
-            for m in thm:
-                link = m.find('a')['href']
-                links.append('https://data.gov.ma' + link)
-                title = m.find('h2').text.strip()
-                titles.append(title)
+        result = response.json()
+        res = result["result"]
+        count = res["count"]
+        results = result["result"]["results"]
+        titre_fr = results[0]["title_fr"]
+        titre_ar = results[0]["title_ar"]
+        id = results[0]["id"]
+        if lang == "fr":
+            titles.append(titre_fr)
+            link = "https://data.gov.ma/data/fr/dataset/" + id
+            links.append(link)
         else:
-            return titles, links, response.url, 0
-
-        if not titles:
-            return titles, links, response.url, 0
-
-        return titles, links, response.url, nombre_don[0]
+            titles.append(titre_ar)
+            link = "https://data.gov.ma/data/ar/dataset/" + id
+            links.append(link)
+        return titles, links, res_url, count
     except Exception as e:
         logger.error(f"An error occurred in chercher_data: {e}")
         return titles, links, "", 0  # Return empty values in case of an error
 
 
+
+
 def format_reponse(data, lang="fr"):
     try:
         if lang == 'fr':
-            if len(data[0]) == 1:
-                response = f"Ici le lien vers la donnée correspondant au mot recherché : {data[-2]}\n"
-                response += f"Voici le seul résultat trouvé :\n"
-                response += f"Titre : {data[0][0]}\n"
-                response += f"Lien : {data[1][0]}\n"
-                return response
-            else:
                 response = f"Ici le lien vers toutes les {data[-1]} données correspondant au mot recherché : {data[-2]}\n"
                 response += f"Voici un exemple parmi les résultats trouvés :\n"
                 response += f"Titre : {data[0][-1]}\n"
                 response += f"Lien : {data[1][-1]}\n"
                 return response, data[-1]
         else:
-            if len(data[0]) == 1:
-                response = f"هنا الرابط للبيانات المطابقة للكلمة المطلوبة: {data[-2]}\n"
-                response += f"إليك النتيجة الوحيدة التي تم العثور عليها:\n"
-                response += f"العنوان: {data[0][0]}\n"
-                response += f"الرابط: {data[1][0]}\n"
-                return response
-            else:
                 response = f"هنا الرابط لجميع {data[-1]} البيانات المطابقة للكلمة المطلوبة: {data[-2]}\n"
                 response += f"إليك مثال من بين النتائج التي تم العثور عليها:\n"
                 response += f"العنوان: {data[0][-1]}\n"
@@ -302,15 +289,14 @@ def request_data_v2(text, lang='fr'):
     
 
 def get_text_of_max_number(data):
-    max_number = float('-inf')
+    max_number = 0
     max_text = None
     for item in data:
-        if isinstance(item, tuple) and len(item) > 1 and item[1].isdigit():
-            number = int(item[1])
-            if number > max_number:
-                max_number = number
-                max_text = item[0]
+      if max_number < item[-1]:
+        max_number = item[-1]
+        max_text = item[0]
     return max_text
+
 
  
  
@@ -357,4 +343,3 @@ def classify_intent_v4(text, lang='fr'):
             'input_text': text
         }
         
-
