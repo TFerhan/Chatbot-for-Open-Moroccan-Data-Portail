@@ -1,0 +1,8 @@
+name: 'Chatbot Block v2'
+type: module
+description: 'Provides a block for the chatbot.'
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:block
+  - drupal:config

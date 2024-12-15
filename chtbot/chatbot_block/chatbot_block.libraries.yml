@@ -1,0 +1,23 @@
+chatbot_css_arabic:
+  version: 1.0
+  css:
+    theme:
+      css/arabic.css: { weight: 100 }
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+chatbot_css_french:
+  version: 1.0
+  css:
+    theme:
+      css/s_2.css: { weight: 100 }
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

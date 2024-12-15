@@ -1,0 +1,32 @@
+<div class="chatbot_block" data-trbch-url="{{ trbch_url }}">
+  <button class="chatbot-toggler">
+    <span class="material-symbols-rounded">mode_comment</span>
+    <span class="material-symbols-outlined">close</span>
+  </button>
+
+  <div class="chatbot">
+    <header>
+      <img src="{{ image_url }}" alt="Logo" class="header-logo">
+      <h2 class="ch2">Assistant</h2>
+      <span class="menu-btn material-symbols-outlined">more_vert</span>
+      <span class="close-btn material-symbols-outlined">close</span>
+      <div class="menu-dropdown" style="display: none;">
+        <button class="help-btn">Help</button>
+      </div>
+    </header>
+    <ul class="chatbox">
+      <li class="loading" style="display: none;">
+        <span class="loading-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </span>
+      </li>
+    </ul>
+    <div class="chat-input">
+      <textarea placeholder="Posez une question ou retrouvez des données..." spellcheck="false"></textarea>
+      <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+  </div>
+</div>
+

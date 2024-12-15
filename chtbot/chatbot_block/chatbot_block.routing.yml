@@ -1,0 +1,31 @@
+chatbot_block.classify_intent:
+  path: '/chatbot/classify-intent'
+  defaults:
+    _controller: '\Drupal\chatbot_block\Controller\ChatbotController::classifyIntent'
+    _title: 'Classify Intent'
+  methods: ['POST']
+  requirements:
+    _permission: 'access content'
+
+chatbot_block.request_data:
+  path: '/chatbot/request-data'
+  defaults:
+    _controller: '\Drupal\chatbot_block\Controller\ChatbotController::requestData'
+    _title: 'Request Data'
+  methods: ['POST']
+  requirements:
+    _permission: 'access content'
+
+chatbot_block.general_v1:
+  path: '/chatbot/general-v1'
+  defaults:
+    _controller: '\Drupal\chatbot_block\Controller\ChatbotController::generalV1'
+    _title: 'General V1'
+  methods: ['POST']
+  requirements:
+    _permission: 'access content'
+
+
+
+
+

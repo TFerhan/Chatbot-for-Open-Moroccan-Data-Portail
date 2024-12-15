@@ -1,0 +1,7 @@
+token: 'gAAAAABm2QsP95Jyt4MSXrJW7sIingfzmiDnrelfw1D28CHytwMJs-cHaGdR5pup3Lyn0jorETpgn6IY6yMJLy9LQvrKM39nBA=='
+api_url: 'http://3.147.62.0:5000/api'
+api_key: 'datagovma'
+REQUEST_LIMIT: 15
+TIME_WINDOW: 60 
+EXPIRY_TIME: 600 
+MAX_LENGTH: 50
