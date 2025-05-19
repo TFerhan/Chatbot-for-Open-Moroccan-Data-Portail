@@ -1,5 +1,10 @@
 # Guide de référence Backend
 
+
+https://github.com/user-attachments/assets/2f72e403-7924-4e3b-8366-4560af0134ff
+
+
+
 # Introduction
 
 Cette documentation détaille le code et le mécanisme de l’application FastAPI. FastAPI est un framework web moderne, rapide (haute performance) pour la création d'APIs avec Python 3.6+ basé sur les annotations de type standard.
